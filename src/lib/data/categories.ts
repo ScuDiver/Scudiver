@@ -1,0 +1,68 @@
+import type { Category } from "@/lib/types";
+
+export const categories: Category[] = [
+  {
+    slug: "scule-electrice",
+    name: "Scule Electrice",
+    description:
+      "Mașini de găurit, polizoare, ciocane rotopercutoare, fierăstraie și alte scule electrice profesionale pentru construcții și industrie.",
+    cpvCode: "43830000-0",
+    cpvDescription: "Scule electrice / scule cu motor",
+    icon: "⚡",
+    productCount: 8,
+  },
+  {
+    slug: "scule-de-mana",
+    name: "Scule de Mână",
+    description:
+      "Chei, șurubelnițe, clești, ciocare, fierăstraie manuale și alte scule de mână de calitate profesională.",
+    cpvCode: "44511000-5",
+    cpvDescription: "Scule de mână",
+    icon: "🔧",
+    productCount: 6,
+  },
+  {
+    slug: "burghie-si-accesorii",
+    name: "Burghie și Accesorii",
+    description:
+      "Burghie pentru metal, beton și lemn, discuri abrazive, freze și accesorii pentru scule electrice.",
+    cpvCode: "44512000-2",
+    cpvDescription: "Diverse scule de mână / accesorii",
+    icon: "🔩",
+    productCount: 6,
+  },
+  {
+    slug: "truse-de-scule",
+    name: "Truse de Scule",
+    description:
+      "Truse complete de scule pentru electricieni, mecanici și construcții, în valize profesionale.",
+    cpvCode: "44512940-3",
+    cpvDescription: "Truse de scule",
+    icon: "🧰",
+    productCount: 4,
+  },
+  {
+    slug: "echipament-de-protectie",
+    name: "Echipament de Protecție",
+    description:
+      "Căști, ochelari de protecție, mănuși, salopete și alte echipamente individuale de protecție (EIP) conform normelor UE.",
+    cpvCode: "18100000-0",
+    cpvDescription: "Echipament individual de protecție",
+    icon: "🦺",
+    productCount: 4,
+  },
+  {
+    slug: "consumabile",
+    name: "Consumabile și Accesorii",
+    description:
+      "Dibluri, șuruburi, adezivi, sigilanți, abrazive și alte consumabile pentru construcții și instalații.",
+    cpvCode: "44316000-8",
+    cpvDescription: "Articole de fierărie / consumabile",
+    icon: "📦",
+    productCount: 4,
+  },
+];
+
+export function getCategoryBySlug(slug: string) {
+  return categories.find((c) => c.slug === slug);
+}
