@@ -42,7 +42,7 @@ export default function DeclaratieAccesibilitatePage() {
                 1. Angajamentul față de accesibilitate
               </h2>
               <p>
-                <strong>[DENUMIRE_COMPLETA_FIRMA] SRL</strong> se angajează să asigure accesibilitatea
+                <strong>SCUDIVER 2016 SRL</strong> se angajează să asigure accesibilitatea
                 site-ului scudiver.ro pentru toate persoanele, inclusiv pentru cele cu dizabilități vizuale,
                 motorii, auditive sau cognitive. Facem eforturi continue pentru a îmbunătăți experiența
                 utilizatorilor și pentru a respecta standardele internaționale de accesibilitate.
@@ -121,14 +121,14 @@ export default function DeclaratieAccesibilitatePage() {
                 informații într-un format alternativ, vă rugăm să ne contactați:
               </p>
               <address className="mt-4 not-italic bg-surface border border-border rounded-sm p-4">
-                <p><strong>[DENUMIRE_COMPLETA_FIRMA] SRL</strong></p>
+                <p><strong>SCUDIVER 2016 SRL</strong></p>
                 <p>Email accesibilitate:{" "}
                   <a href="mailto:accesibilitate@scudiver.ro" className="text-brand underline">
                     accesibilitate@scudiver.ro
                   </a>
                   {" "}(sau office@scudiver.ro cu subiectul „Accesibilitate")
                 </p>
-                <p>Telefon: <a href="tel:[TELEFON_PLACEHOLDER]" className="text-brand underline">[TELEFON_PLACEHOLDER]</a></p>
+                <p>Telefon: <a href="tel:0753657215" className="text-brand underline">0753 657 215</a></p>
                 <p>Termen răspuns: 15 zile lucrătoare</p>
               </address>
               <p className="mt-4">
@@ -157,7 +157,7 @@ export default function DeclaratieAccesibilitatePage() {
             </section>
 
             <p className="text-xs text-muted border-t border-border pt-4">
-              Prezenta declarație a fost redactată la [DATA_ACTUALIZARE] și va fi revizuită anual sau ori de câte ori sunt efectuate modificări semnificative ale site-ului.
+              Prezenta declarație a fost redactată la 16 iunie 2026 și va fi revizuită anual sau ori de câte ori sunt efectuate modificări semnificative ale site-ului.
             </p>
 
           </div>

@@ -9,13 +9,13 @@ const contactInfo = [
   {
     Icon: MapPin,
     label: "Adresă sediu social",
-    lines: ["[ADRESA_COMPLETA]", "[LOCALITATE], [JUDET] [COD_POSTAL]"],
+    lines: ["Str. Unirii bl 5A/17", "Sighetu Marmatiei, Maramures"],
   },
   {
     Icon: Phone,
     label: "Telefon",
-    lines: ["[TELEFON_PLACEHOLDER]"],
-    href: "tel:[TELEFON_PLACEHOLDER]",
+    lines: ["0753 657 215"],
+    href: "tel:0753657215",
   },
   {
     Icon: Mail,
@@ -115,7 +115,7 @@ export default function ContactPage() {
                   </div>
                   <div className="mt-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-sm px-4 py-2 text-center">
                     <p className="text-white font-bold text-sm">ScuDiver SRL</p>
-                    <p className="text-white/60 text-xs">[LOCALITATE], România</p>
+                    <p className="text-white/60 text-xs">Sighetu Marmatiei, România</p>
                   </div>
                 </div>
               </div>

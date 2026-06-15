@@ -38,12 +38,12 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9 text-xs text-white/60">
           <span>Furnizor autorizat SEAP · Licitații publice e-licitatie.ro</span>
           <a
-            href="tel:[TELEFON_PLACEHOLDER]"
+            href="tel:0753657215"
             className="flex items-center gap-1.5 hover:text-brand transition-colors"
             aria-label="Telefon contact"
           >
             <Phone size={12} />
-            <span>[TELEFON_PLACEHOLDER]</span>
+            <span>0753 657 215</span>
           </a>
         </div>
       </div>

@@ -132,18 +132,18 @@ export function Footer() {
               Contact
             </h3>
             <address className="not-italic space-y-3 text-sm text-white/70">
-              <p className="font-semibold text-white">[DENUMIRE_COMPLETA_FIRMA] SRL</p>
+              <p className="font-semibold text-white">SCUDIVER 2016 SRL</p>
               <div className="flex items-start gap-2">
                 <MapPin size={14} className="text-brand mt-0.5 shrink-0" />
                 <span>
-                  [ADRESA_COMPLETA]<br />
-                  [LOCALITATE], [JUDET], [COD_POSTAL]
+                  Str. Unirii bl 5A/17<br />
+                  Sighetu Marmatiei, Maramures
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={14} className="text-brand shrink-0" />
-                <a href="tel:[TELEFON_PLACEHOLDER]" className="hover:text-white transition-colors">
-                  [TELEFON_PLACEHOLDER]
+                <a href="tel:0753657215" className="hover:text-white transition-colors">
+                  0753 657 215
                 </a>
               </div>
               <div className="flex items-center gap-2">
@@ -163,14 +163,13 @@ export function Footer() {
           {/* Identification data — Legea 365/2002 art.5 + Legea 31/1990 */}
           <div className="text-xs text-white/50 space-y-1 mb-4">
             <p>
-              <strong className="text-white/70">[DENUMIRE_COMPLETA_FIRMA] SRL</strong>
-              {" "}· CUI: <strong className="text-white/70">RO[CUI_PLACEHOLDER]</strong>
-              {" "}· J [J_PLACEHOLDER]
-              {" "}· Capital social: [CAPITAL_SOCIAL] RON subscris și vărsat
+              <strong className="text-white/70">SCUDIVER 2016 SRL</strong>
+              {" "}· CUI: <strong className="text-white/70">RO35975938</strong>
+              {" "}· J 24/541/2016
             </p>
             <p>
-              Sediu social: [ADRESA_COMPLETA], [LOCALITATE], [JUDET]
-              {" "}· IBAN: [IBAN_PLACEHOLDER] · Bancă: [BANCA_PLACEHOLDER]
+              Sediu social: Str. Unirii bl 5A/17, Sighetu Marmatiei, Maramures
+              {" "}· IBAN: ROBACX0000002549981000 · Bancă: Unicredit
             </p>
             <p>
               Operator înregistrat în SEAP /{" "}
@@ -200,7 +199,7 @@ export function Footer() {
           </div>
 
           <p className="text-xs text-white/30">
-            © {new Date().getFullYear()} [DENUMIRE_COMPLETA_FIRMA] SRL. Toate drepturile rezervate.
+            © {new Date().getFullYear()} SCUDIVER 2016 SRL. Toate drepturile rezervate.
             Site de prezentare — nu se efectuează comenzi sau plăți online.
           </p>
         </div>

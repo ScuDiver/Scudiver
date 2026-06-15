@@ -111,7 +111,7 @@ export default function ReclamatiiPage() {
               </div>
             </a>
             <a
-              href="tel:[TELEFON_PLACEHOLDER]"
+              href="tel:0753657215"
               className="flex items-center gap-3 bg-white border border-border rounded-sm p-4 hover:border-brand hover:bg-brand/5 transition-colors group"
             >
               <Phone size={20} className="text-brand" />
@@ -119,7 +119,7 @@ export default function ReclamatiiPage() {
                 <p className="font-semibold text-charcoal text-sm group-hover:text-brand transition-colors">
                   Telefon
                 </p>
-                <p className="text-xs text-muted">[TELEFON_PLACEHOLDER]</p>
+                <p className="text-xs text-muted">0753 657 215</p>
               </div>
             </a>
           </div>

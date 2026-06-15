@@ -153,7 +153,7 @@ export default function PoliticaCookiePage() {
                   Politica de Confidențialitate
                 </Link>.
               </p>
-              <p className="mt-2 text-muted text-xs">Data ultimei actualizări: [DATA_ACTUALIZARE]</p>
+              <p className="mt-2 text-muted text-xs">Data ultimei actualizări: 16 iunie 2026</p>
             </section>
 
           </div>

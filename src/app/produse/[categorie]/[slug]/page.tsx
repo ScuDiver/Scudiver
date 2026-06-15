@@ -193,7 +193,7 @@ export default async function ProductPage({ params }: Props) {
                 Cere Ofertă <ArrowRight size={16} />
               </Link>
               <a
-                href="tel:[TELEFON_PLACEHOLDER]"
+                href="tel:0753657215"
                 className="flex items-center justify-center gap-2 w-full border border-white/20 text-white/80 font-semibold text-sm px-5 py-2.5 rounded-sm hover:bg-white/10 transition-colors"
               >
                 <Phone size={14} /> Sunați acum

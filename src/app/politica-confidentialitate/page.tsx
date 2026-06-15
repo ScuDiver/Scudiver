@@ -33,9 +33,9 @@ export default function PoliticaConfidentialitatePage() {
                 1. Cine suntem (operatorul de date)
               </h2>
               <p>
-                Operatorul de date cu caracter personal este <strong>[DENUMIRE_COMPLETA_FIRMA] SRL</strong>,
-                cu sediul social la [ADRESA_COMPLETA], [LOCALITATE], [JUDET],
-                CUI: RO[CUI_PLACEHOLDER], J[J_PLACEHOLDER].
+                Operatorul de date cu caracter personal este <strong>SCUDIVER 2016 SRL</strong>,
+                cu sediul social la Str. Unirii bl 5A/17, Sighetu Marmatiei, Maramures,
+                CUI: RO35975938, J24/541/2016.
               </p>
               <p className="mt-3">
                 Contact responsabil cu protecția datelor (DPO):{" "}
@@ -155,7 +155,7 @@ export default function PoliticaConfidentialitatePage() {
                 actualizată va fi publicată pe Site cu indicarea datei ultimei revizuiri.
               </p>
               <p className="mt-2 text-muted text-xs">
-                Data ultimei actualizări: [DATA_ACTUALIZARE]
+                Data ultimei actualizări: 16 iunie 2026
               </p>
             </section>
 
