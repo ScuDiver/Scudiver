@@ -18,6 +18,7 @@ const navLinks = [
       { label: "Truse de Scule", href: "/produse/truse-de-scule" },
       { label: "Echipament de Protecție", href: "/produse/echipament-de-protectie" },
       { label: "Consumabile", href: "/produse/consumabile" },
+      { label: "Elemente de Asamblare", href: "/produse/elemente-de-asamblare" },
     ],
   },
   { label: "Despre Noi", href: "/despre-noi" },

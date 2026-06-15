@@ -55,11 +55,21 @@ export const categories: Category[] = [
     slug: "consumabile",
     name: "Consumabile și Accesorii",
     description:
-      "Dibluri, șuruburi, adezivi, sigilanți, abrazive și alte consumabile pentru construcții și instalații.",
+      "Dibluri, adezivi, sigilanți, abrazive și alte consumabile pentru construcții și instalații.",
     cpvCode: "44316000-8",
     cpvDescription: "Articole de fierărie / consumabile",
     icon: "📦",
     productCount: 4,
+  },
+  {
+    slug: "elemente-de-asamblare",
+    name: "Elemente de Asamblare",
+    description:
+      "Șuruburi pentru lemn, metal și rigips, bolțuri metrice, piulițe, șaibe și ancore expansibile pentru construcții și instalații.",
+    cpvCode: "44530000-4",
+    cpvDescription: "Dispozitive de fixare / elemente de asamblare",
+    icon: "🔩",
+    productCount: 6,
   },
 ];
 
