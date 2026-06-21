@@ -30,7 +30,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/">
               <Image
-                src="/assets/brands/LOGO.jpeg"
+                src="/assets/brands/LOGO.webp"
                 alt="ScuDiver"
                 width={140}
                 height={42}

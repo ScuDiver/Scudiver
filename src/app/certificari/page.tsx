@@ -37,12 +37,12 @@ const standards = [
 ];
 
 const certifiedBrands = [
-  { name: "Bosch", file: "bosch.jpg", certs: ["CE", "ISO 9001", "ISO 14001"] },
-  { name: "DeWalt", file: "dewalt.jpeg", certs: ["CE", "ISO 9001", "UL"] },
-  { name: "Milwaukee", file: "milwaukee.jpeg", certs: ["CE", "ISO 9001"] },
-  { name: "Makita", file: "makita.jpg", certs: ["CE", "ISO 9001", "ISO 14001"] },
-  { name: "Unior", file: "unior.jpeg", certs: ["CE", "ISO 9001", "VDE"] },
-  { name: "YATO", file: "YATO.jpeg", certs: ["CE", "ISO 9001"] },
+  { name: "Bosch", file: "bosch.webp", certs: ["CE", "ISO 9001", "ISO 14001"] },
+  { name: "DeWalt", file: "dewalt.webp", certs: ["CE", "ISO 9001", "UL"] },
+  { name: "Milwaukee", file: "milwaukee.webp", certs: ["CE", "ISO 9001"] },
+  { name: "Makita", file: "makita.webp", certs: ["CE", "ISO 9001", "ISO 14001"] },
+  { name: "Unior", file: "unior.webp", certs: ["CE", "ISO 9001", "VDE"] },
+  { name: "YATO", file: "YATO.webp", certs: ["CE", "ISO 9001"] },
 ];
 
 export default function CertificariPage() {

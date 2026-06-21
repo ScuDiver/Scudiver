@@ -1,22 +1,22 @@
 import Image from "next/image";
 
 const brands = [
-  { name: "DeWalt", file: "dewalt.jpeg" },
-  { name: "Milwaukee", file: "milwaukee.jpeg" },
-  { name: "Makita", file: "makita.jpg" },
-  { name: "Bosch", file: "bosch.jpg" },
-  { name: "Unior", file: "unior.jpeg" },
-  { name: "YATO", file: "YATO.jpeg" },
-  { name: "BGS", file: "sculeBGS.jpeg" },
-  { name: "Projahn", file: "projahn.jpeg" },
-  { name: "INGCO", file: "ingco.jpeg" },
-  { name: "SOUDAL", file: "SOUDAL.jpeg" },
-  { name: "HENKEL", file: "HENKEL.jpeg" },
-  { name: "Schuller", file: "SCHULLER.jpeg" },
-  { name: "Duplicolor", file: "DUPLICOLOR.jpeg" },
-  { name: "Schneider Electric", file: "SCHNEIDERELECTRIC.jpeg" },
-  { name: "EATON", file: "EATON.jpeg" },
-  { name: "Bolman", file: "bolman.jpeg" },
+  { name: "DeWalt", file: "dewalt.webp" },
+  { name: "Milwaukee", file: "milwaukee.webp" },
+  { name: "Makita", file: "makita.webp" },
+  { name: "Bosch", file: "bosch.webp" },
+  { name: "Unior", file: "unior.webp" },
+  { name: "YATO", file: "YATO.webp" },
+  { name: "BGS", file: "sculeBGS.webp" },
+  { name: "Projahn", file: "projahn.webp" },
+  { name: "INGCO", file: "ingco.webp" },
+  { name: "SOUDAL", file: "SOUDAL.webp" },
+  { name: "HENKEL", file: "HENKEL.webp" },
+  { name: "Schuller", file: "SCHULLER.webp" },
+  { name: "Duplicolor", file: "DUPLICOLOR.webp" },
+  { name: "Schneider Electric", file: "SCHNEIDERELECTRIC.webp" },
+  { name: "EATON", file: "EATON.webp" },
+  { name: "Bolman", file: "bolman.webp" },
 ];
 
 export function BrandCarousel() {

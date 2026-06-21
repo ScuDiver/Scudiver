@@ -54,7 +54,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 focus-visible:outline-brand focus-visible:outline-2 focus-visible:outline-offset-2 rounded-sm">
             <Image
-              src="/assets/brands/LOGO.jpeg"
+              src="/assets/brands/LOGO.webp"
               alt="ScuDiver — Scule și Accesorii pentru Construcții"
               width={160}
               height={48}
