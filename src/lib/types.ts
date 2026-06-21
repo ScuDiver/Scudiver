@@ -22,6 +22,7 @@ export interface Category {
   cpvCode: string;
   cpvDescription: string;
   icon: string;
+  image?: string;
   productCount?: number;
 }
 

@@ -58,7 +58,7 @@ export function Header() {
               alt="ScuDiver — Scule și Accesorii pentru Construcții"
               width={160}
               height={48}
-              className="h-10 w-auto object-contain brightness-0 invert"
+              className="h-10 w-auto object-contain"
               priority
             />
           </Link>

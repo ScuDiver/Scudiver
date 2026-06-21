@@ -9,6 +9,7 @@ export const categories: Category[] = [
     cpvCode: "43830000-0",
     cpvDescription: "Scule electrice / scule cu motor",
     icon: "⚡",
+    image: "/assets/categories/sudura-saffro.jpg",
     productCount: 8,
   },
   {
@@ -29,6 +30,7 @@ export const categories: Category[] = [
     cpvCode: "44512000-2",
     cpvDescription: "Diverse scule de mână / accesorii",
     icon: "🔩",
+    image: "/assets/categories/burghie-bolman.jpg",
     productCount: 6,
   },
   {
@@ -59,6 +61,7 @@ export const categories: Category[] = [
     cpvCode: "44316000-8",
     cpvDescription: "Articole de fierărie / consumabile",
     icon: "📦",
+    image: "/assets/categories/elemente-de-fixare-loctite.jpg",
     productCount: 4,
   },
   {
@@ -69,6 +72,7 @@ export const categories: Category[] = [
     cpvCode: "44530000-4",
     cpvDescription: "Dispozitive de fixare / elemente de asamblare",
     icon: "🔩",
+    image: "/assets/categories/elemente-de-fixare.jpeg",
     productCount: 6,
   },
 ];

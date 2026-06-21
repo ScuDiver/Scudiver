@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Zap, Wrench, Settings, Package, ShieldCheck, Layers, Link2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { categories } from "@/lib/data/categories";
@@ -80,35 +81,50 @@ export function CategoryGrid() {
                 {/* Visual header */}
                 <div
                   className="relative h-28 flex items-center justify-center overflow-hidden"
-                  style={{ background: vis.gradient }}
+                  style={cat.image ? undefined : { background: vis.gradient }}
                 >
-                  {/* Diagonal stripe overlay */}
-                  <div
-                    className="absolute inset-0 opacity-[0.08]"
-                    style={{
-                      backgroundImage:
-                        "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
-                      backgroundSize: "12px 12px",
-                    }}
-                    aria-hidden="true"
-                  />
-                  {/* Grid dot pattern */}
-                  <div
-                    className="absolute inset-0 opacity-[0.06]"
-                    style={{
-                      backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
-                      backgroundSize: "20px 20px",
-                    }}
-                    aria-hidden="true"
-                  />
-                  <Icon
-                    size={44}
-                    className="text-white relative z-10 group-hover:scale-110 transition-transform duration-300"
-                    strokeWidth={1.5}
-                    aria-hidden="true"
-                  />
+                  {cat.image ? (
+                    <>
+                      <Image
+                        src={cat.image}
+                        alt={cat.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                      <div className="absolute inset-0 bg-black/30" aria-hidden="true" />
+                    </>
+                  ) : (
+                    <>
+                      {/* Diagonal stripe overlay */}
+                      <div
+                        className="absolute inset-0 opacity-[0.08]"
+                        style={{
+                          backgroundImage:
+                            "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
+                          backgroundSize: "12px 12px",
+                        }}
+                        aria-hidden="true"
+                      />
+                      {/* Grid dot pattern */}
+                      <div
+                        className="absolute inset-0 opacity-[0.06]"
+                        style={{
+                          backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
+                          backgroundSize: "20px 20px",
+                        }}
+                        aria-hidden="true"
+                      />
+                      <Icon
+                        size={44}
+                        className="text-white relative z-10 group-hover:scale-110 transition-transform duration-300"
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
+                    </>
+                  )}
                   {/* CPV badge */}
-                  <span className="absolute top-2 right-2 text-[10px] font-mono text-white/40 group-hover:text-white/70 transition-colors">
+                  <span className="absolute top-2 right-2 text-[10px] font-mono text-white/40 group-hover:text-white/70 transition-colors z-10">
                     CPV {cat.cpvCode}
                   </span>
                 </div>
