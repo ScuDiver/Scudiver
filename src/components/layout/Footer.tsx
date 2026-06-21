@@ -34,7 +34,7 @@ export function Footer() {
                 alt="ScuDiver"
                 width={140}
                 height={42}
-                className="h-10 w-auto object-contain brightness-0 invert mb-4"
+                className="h-10 w-auto object-contain mb-4"
               />
             </Link>
             <p className="text-white/60 text-sm leading-relaxed mb-4">
