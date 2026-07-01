@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, categories } from "@/lib/data/categories";
 import { getProductsByCategory } from "@/lib/data/products";
@@ -50,9 +51,6 @@ export default async function CategoryPage({ params }: Props) {
               <h1 className="font-display font-extrabold text-4xl md:text-5xl text-white uppercase leading-none">
                 {cat.name}
               </h1>
-              <p className="text-white/60 mt-1 text-sm font-mono">
-                CPV {cat.cpvCode} — {cat.cpvDescription}
-              </p>
             </div>
           </div>
           <p className="mt-4 text-white/70 max-w-2xl">{cat.description}</p>
@@ -79,8 +77,25 @@ export default async function CategoryPage({ params }: Props) {
               <Link
                 key={product.id}
                 href={`/produse/${cat.slug}/${product.slug}`}
-                className="group bg-white border border-border rounded-sm p-5 card-hover flex flex-col"
+                className="group bg-white border border-border rounded-sm overflow-hidden card-hover flex flex-col"
               >
+                {/* Product image */}
+                <div className="relative h-44 bg-surface flex items-center justify-center overflow-hidden">
+                  {product.image ? (
+                    <Image
+                      src={product.image}
+                      alt={product.imageAlt}
+                      fill
+                      className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <span className="text-xs font-medium text-muted/50">{product.brand}</span>
+                  )}
+                </div>
+
+                {/* Card content */}
+                <div className="p-5 flex flex-col flex-1">
                 {/* Brand + featured badge */}
                 <div className="flex items-center justify-between mb-3">
                   <Badge variant="brand">{product.brand}</Badge>
@@ -113,6 +128,7 @@ export default async function CategoryPage({ params }: Props) {
                   <span className="flex items-center gap-1 text-xs font-semibold text-brand">
                     Detalii <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                   </span>
+                </div>
                 </div>
               </Link>
             ))}

@@ -8,7 +8,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 export const metadata: Metadata = {
   title: "Catalog Produse",
   description:
-    "Catalog complet de scule electrice, scule de mână, burghie, truse și accesorii pentru construcții. Specificații tehnice complete și coduri CPV.",
+    "Catalog complet de scule electrice, scule de mână, burghie, truse și accesorii pentru construcții. Specificații tehnice complete.",
 };
 
 export default function ProdusePage() {
@@ -16,7 +16,7 @@ export default function ProdusePage() {
     <>
       <PageHeader
         title="Catalog Produse"
-        subtitle="Scule electrice, scule de mână, burghie și accesorii pentru construcții — cu specificații tehnice complete și coduri CPV."
+        subtitle="Scule electrice, scule de mână, burghie și accesorii pentru construcții — cu specificații tehnice complete."
         dark
       />
 
@@ -44,9 +44,6 @@ export default function ProdusePage() {
                         <h2 className="font-display font-bold text-xl text-charcoal uppercase leading-tight group-hover:text-brand transition-colors">
                           {cat.name}
                         </h2>
-                        <p className="text-xs text-muted font-mono">
-                          CPV {cat.cpvCode}
-                        </p>
                       </div>
                     </div>
                     <p className="text-sm text-muted leading-relaxed mb-4">
@@ -84,24 +81,6 @@ export default function ProdusePage() {
             })}
           </div>
 
-          {/* CPV info note */}
-          <div className="mt-10 bg-white border border-border rounded-sm p-6">
-            <h3 className="font-display font-bold text-lg text-charcoal uppercase mb-2">
-              Informații pentru Autorități Contractante
-            </h3>
-            <p className="text-sm text-muted leading-relaxed">
-              Toate produsele din catalogul nostru sunt însoțite de coduri CPV relevante,
-              specificații tehnice complete și declarații de conformitate CE. La solicitare,
-              punem la dispoziție fișe tehnice, certificate de garanție și documentația
-              necesară pentru verificarea conformității cu caietele de sarcini.
-            </p>
-            <Link
-              href="/cerere-oferta"
-              className="mt-4 inline-flex items-center gap-2 bg-brand text-white font-semibold text-sm px-5 py-2.5 rounded-sm hover:bg-brand-dark transition-colors"
-            >
-              Trimite cerere de ofertă <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       </div>
     </>

@@ -6,6 +6,7 @@ import { B2GBanner } from "@/components/sections/B2GBanner";
 import { ToolsShowcase } from "@/components/sections/ToolsShowcase";
 import { getFeaturedProducts } from "@/lib/data/products";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Zap, Wrench, Settings, Package, ShieldCheck, Layers, Link2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -75,21 +76,37 @@ export default function HomePage() {
                 >
                   {/* Visual header */}
                   <div
-                    className="relative h-24 flex items-center justify-center overflow-hidden"
-                    style={{ background: gradient }}
+                    className="relative h-40 flex items-center justify-center overflow-hidden bg-surface"
                   >
-                    <div
-                      className="absolute inset-0 opacity-[0.07]"
-                      style={{
-                        backgroundImage: "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
-                        backgroundSize: "12px 12px",
-                      }}
-                      aria-hidden="true"
-                    />
-                    <Icon size={36} className="text-white/90 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} aria-hidden="true" />
-                    <span className="absolute top-2 right-2 text-[10px] font-bold text-white/80 bg-white/10 px-1.5 py-0.5 rounded-sm">
-                      {product.brand}
-                    </span>
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={product.imageAlt}
+                        fill
+                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    ) : (
+                      <>
+                        <div
+                          className="absolute inset-0"
+                          style={{ background: gradient }}
+                          aria-hidden="true"
+                        />
+                        <div
+                          className="absolute inset-0 opacity-[0.07]"
+                          style={{
+                            backgroundImage: "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
+                            backgroundSize: "12px 12px",
+                          }}
+                          aria-hidden="true"
+                        />
+                        <Icon size={36} className="text-white/90 group-hover:scale-110 transition-transform duration-300 relative z-10" strokeWidth={1.5} aria-hidden="true" />
+                        <span className="absolute top-2 right-2 text-[10px] font-bold text-white/80 bg-white/10 px-1.5 py-0.5 rounded-sm z-10">
+                          {product.brand}
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   <div className="p-4">
@@ -99,9 +116,6 @@ export default function HomePage() {
                     <p className="text-xs text-muted leading-relaxed line-clamp-2 mb-3">
                       {product.description}
                     </p>
-                    <div className="text-[10px] text-muted/60 font-mono">
-                      CPV: {product.cpvCode}
-                    </div>
                     <div className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand">
                       Cere ofertă <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                     </div>

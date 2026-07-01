@@ -123,10 +123,6 @@ export function CategoryGrid() {
                       />
                     </>
                   )}
-                  {/* CPV badge */}
-                  <span className="absolute top-2 right-2 text-[10px] font-mono text-white/40 group-hover:text-white/70 transition-colors z-10">
-                    CPV {cat.cpvCode}
-                  </span>
                 </div>
 
                 {/* Card body */}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, CheckCircle2, FileText, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { getCategoryBySlug } from "@/lib/data/categories";
 import { getProductBySlug, products } from "@/lib/data/products";
 import { Badge } from "@/components/ui/Badge";
@@ -144,55 +144,10 @@ export default async function ProductPage({ params }: Props) {
               </table>
             </div>
 
-            {/* CPV info */}
-            <div className="bg-white border border-border rounded-sm p-6">
-              <h2 className="font-display font-bold text-xl text-charcoal uppercase mb-3 flex items-center gap-2">
-                <FileText size={18} className="text-brand" />
-                Informații CPV (Achiziții Publice)
-              </h2>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-xs text-muted uppercase tracking-wide mb-1">Cod CPV</p>
-                  <p className="font-mono font-bold text-charcoal">{product.cpvCode}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted uppercase tracking-wide mb-1">Descriere CPV</p>
-                  <p className="font-medium text-charcoal">{product.cpvDescription}</p>
-                </div>
-              </div>
-              <p className="mt-3 text-xs text-muted">
-                Produsul poate fi achiziționat prin proceduri de licitație publică via{" "}
-                <a
-                  href="https://e-licitatie.ro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-brand underline hover:text-brand-dark"
-                >
-                  e-licitatie.ro
-                </a>
-                . Documentația tehnică și certificatele CE sunt disponibile la cerere.
-              </p>
-            </div>
           </div>
 
           {/* Sidebar — quote CTA */}
           <div className="space-y-4">
-            {/* Price note */}
-            {product.priceIndicative && (
-              <div className="bg-white border border-border rounded-sm p-5">
-                <p className="text-xs text-muted uppercase tracking-wide mb-1">
-                  Preț orientativ (fără TVA)
-                </p>
-                <p className="font-display font-extrabold text-3xl text-charcoal">
-                  {product.priceIndicative.toLocaleString("ro-RO")} RON
-                </p>
-                <p className="text-xs text-muted mt-1">
-                  * Prețul este orientativ. Contactați-ne pentru ofertă fermă.
-                  Prețul final poate diferi în funcție de cantitate și termeni contractuali.
-                </p>
-              </div>
-            )}
-
             {/* Quote CTA */}
             <div className="bg-charcoal rounded-sm p-5 space-y-3">
               <h3 className="font-display font-bold text-white uppercase text-lg leading-tight">
