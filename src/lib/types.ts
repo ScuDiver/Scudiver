@@ -11,6 +11,7 @@ export interface Product {
   cpvDescription: string;
   priceIndicative?: number;
   imageAlt: string;
+  image?: string;
   featured?: boolean;
   tags?: string[];
 }

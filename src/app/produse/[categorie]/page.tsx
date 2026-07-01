@@ -109,10 +109,7 @@ export default async function CategoryPage({ params }: Props) {
                     ))}
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono text-muted/70">
-                    SKU: {product.sku}
-                  </span>
+                <div className="flex items-center justify-end">
                   <span className="flex items-center gap-1 text-xs font-semibold text-brand">
                     Detalii <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                   </span>

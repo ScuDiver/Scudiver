@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, CheckCircle2, FileText, Phone } from "lucide-react";
 import { getCategoryBySlug } from "@/lib/data/categories";
 import { getProductBySlug, products } from "@/lib/data/products";
@@ -72,14 +73,27 @@ export default async function ProductPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main content */}
           <div className="lg:col-span-2 space-y-6">
+            {/* Product image */}
+            {product.image && (
+              <div className="bg-white border border-border rounded-sm p-6 flex items-center justify-center">
+                <div className="relative w-full max-w-md aspect-square">
+                  <Image
+                    src={product.image}
+                    alt={product.imageAlt}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 448px"
+                    priority
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Product header */}
             <div className="bg-white border border-border rounded-sm p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Badge variant="brand">{product.brand}</Badge>
                 {product.featured && <Badge variant="dark">Recomandat</Badge>}
-                <span className="text-xs font-mono text-muted/70 ml-auto">
-                  SKU: {product.sku}
-                </span>
               </div>
               <h1 className="font-display font-extrabold text-2xl md:text-3xl text-charcoal uppercase leading-tight">
                 {product.name}
@@ -111,19 +125,21 @@ export default async function ProductPage({ params }: Props) {
               </h2>
               <table className="w-full text-sm" aria-label="Specificații tehnice produs">
                 <tbody>
-                  {Object.entries(product.specs).map(([key, val], i) => (
-                    <tr
-                      key={key}
-                      className={i % 2 === 0 ? "bg-surface" : "bg-white"}
-                    >
-                      <td className="py-2.5 px-3 font-medium text-muted w-40 rounded-l-sm">
-                        {key}
-                      </td>
-                      <td className="py-2.5 px-3 text-charcoal font-semibold rounded-r-sm">
-                        {val}
-                      </td>
-                    </tr>
-                  ))}
+                  {Object.entries(product.specs)
+                    .filter(([key]) => !/diametru|lungime|înălțime|inaltime|lățime|latime|grosime|dimensiune|mărime|marime/i.test(key))
+                    .map(([key, val], i) => (
+                      <tr
+                        key={key}
+                        className={i % 2 === 0 ? "bg-surface" : "bg-white"}
+                      >
+                        <td className="py-2.5 px-3 font-medium text-muted w-40 rounded-l-sm">
+                          {key}
+                        </td>
+                        <td className="py-2.5 px-3 text-charcoal font-semibold rounded-r-sm">
+                          {val}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
@@ -187,7 +203,7 @@ export default async function ProductPage({ params }: Props) {
                 ofertă în 48 de ore.
               </p>
               <Link
-                href={`/cerere-oferta?produs=${encodeURIComponent(product.name)}&sku=${product.sku}`}
+                href={`/cerere-oferta?produs=${encodeURIComponent(product.name)}&categorie=${encodeURIComponent(cat?.name ?? product.categorySlug)}`}
                 className="flex items-center justify-center gap-2 w-full bg-brand text-white font-display font-bold text-base uppercase px-5 py-3 rounded-sm hover:bg-brand-dark transition-colors"
               >
                 Cere Ofertă <ArrowRight size={16} />

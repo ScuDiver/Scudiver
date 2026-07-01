@@ -9,7 +9,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 function QuoteForm() {
   const searchParams = useSearchParams();
   const prefilledProduct = searchParams.get("produs") ?? "";
-  const prefilledSku = searchParams.get("sku") ?? "";
+  const prefilledCategory = searchParams.get("categorie") ?? "";
 
   const [form, setForm] = useState({
     company: "",
@@ -17,7 +17,7 @@ function QuoteForm() {
     email: "",
     phone: "",
     products: prefilledProduct
-      ? `${prefilledProduct}${prefilledSku ? ` (SKU: ${prefilledSku})` : ""}`
+      ? `${prefilledProduct}${prefilledCategory ? ` (${prefilledCategory})` : ""}`
       : "",
     message: "",
     gdprConsent: false,
@@ -29,10 +29,10 @@ function QuoteForm() {
     if (prefilledProduct) {
       setForm((f) => ({
         ...f,
-        products: `${prefilledProduct}${prefilledSku ? ` (SKU: ${prefilledSku})` : ""}`,
+        products: `${prefilledProduct}${prefilledCategory ? ` (${prefilledCategory})` : ""}`,
       }));
     }
-  }, [prefilledProduct, prefilledSku]);
+  }, [prefilledProduct, prefilledCategory]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -162,7 +162,7 @@ function QuoteForm() {
                   id="products"
                   rows={3}
                   className={inputClass}
-                  placeholder="Enumerați produsele, cantitățile, codul SKU sau CPV (dacă îl cunoașteți)..."
+                  placeholder="Enumerați produsele, cantitățile sau codul CPV (dacă îl cunoașteți)..."
                   value={form.products}
                   onChange={(e) => setForm({ ...form, products: e.target.value })}
                 />
