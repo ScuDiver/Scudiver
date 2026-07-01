@@ -1,13 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const LIMITS = {
+  name: 100,
+  email: 254,
+  phone: 20,
+  subject: 200,
+  message: 5000,
+};
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, subject, message } = body;
+    const { name, email, phone, subject, message, gdprConsent } = body;
 
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { error: "Câmpuri obligatorii lipsă." },
+        { status: 400 }
+      );
+    }
+
+    if (!gdprConsent) {
+      return NextResponse.json(
+        { error: "Acordul GDPR este obligatoriu." },
+        { status: 400 }
+      );
+    }
+
+    if (
+      String(name).length > LIMITS.name ||
+      String(email).length > LIMITS.email ||
+      (phone && String(phone).length > LIMITS.phone) ||
+      String(subject).length > LIMITS.subject ||
+      String(message).length > LIMITS.message
+    ) {
+      return NextResponse.json(
+        { error: "Un câmp depășește lungimea maximă permisă." },
         { status: 400 }
       );
     }
@@ -55,7 +83,7 @@ Data: ${new Date().toLocaleString("ro-RO")}
       });
 
       if (!res.ok) {
-        console.error("Resend error:", await res.text());
+        console.error("Resend error sending contact email");
         return NextResponse.json(
           { error: "Eroare la trimiterea mesajului. Vă rugăm contactați-ne direct." },
           { status: 500 }

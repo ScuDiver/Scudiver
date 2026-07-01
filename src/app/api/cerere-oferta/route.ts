@@ -1,13 +1,43 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const LIMITS = {
+  company: 200,
+  contactName: 100,
+  email: 254,
+  phone: 20,
+  products: 2000,
+  message: 5000,
+};
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { company, contactName, email, phone, products: productList, message } = body;
+    const { company, contactName, email, phone, products: productList, message, gdprConsent } = body;
 
     if (!company || !contactName || !email || !message) {
       return NextResponse.json(
         { error: "Câmpuri obligatorii lipsă." },
+        { status: 400 }
+      );
+    }
+
+    if (!gdprConsent) {
+      return NextResponse.json(
+        { error: "Acordul GDPR este obligatoriu." },
+        { status: 400 }
+      );
+    }
+
+    if (
+      String(company).length > LIMITS.company ||
+      String(contactName).length > LIMITS.contactName ||
+      String(email).length > LIMITS.email ||
+      (phone && String(phone).length > LIMITS.phone) ||
+      (productList && String(productList).length > LIMITS.products) ||
+      String(message).length > LIMITS.message
+    ) {
+      return NextResponse.json(
+        { error: "Un câmp depășește lungimea maximă permisă." },
         { status: 400 }
       );
     }
@@ -58,7 +88,7 @@ Data: ${new Date().toLocaleString("ro-RO")}
       });
 
       if (!res.ok) {
-        console.error("Resend error:", await res.text());
+        console.error("Resend error sending cerere-oferta email");
         return NextResponse.json(
           { error: "Eroare la trimiterea emailului. Vă rugăm contactați-ne direct." },
           { status: 500 }

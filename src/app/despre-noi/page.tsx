@@ -25,7 +25,7 @@ const milestones = [
     desc: "Certificare și înregistrare activă pe platforma SEAP / e-licitatie.ro pentru participarea la licitații publice și achiziții directe.",
   },
   {
-    year: "2024",
+    year: "2026",
     title: "Astăzi",
     desc: "Portofoliu de peste 500 de produse, 16+ branduri internaționale și parteneriate active cu instituții publice din toată România.",
   },
