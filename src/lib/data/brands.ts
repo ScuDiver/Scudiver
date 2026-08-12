@@ -376,6 +376,47 @@ export const brands: Brand[] = [
     },
   },
 
+  // ─── Sudură ─────────────────────────────────────────────────────────────────
+  {
+    slug: "saf-fro",
+    name: "SAF-FRO",
+    productBrands: ["SAF-FRO"],
+    ...images("saf-fro"),
+    imageAlt:
+      "Sudor cu mască SAF-FRO în timpul sudării unui profil metalic, alături de electrozi și un aparat de sudură SAF-FRO",
+    tagline: "Aparate de sudură, electrozi și consumabile",
+    origin: "Franța / Italia",
+    founded: "1909",
+    summary:
+      "Aparate de sudură cu electrod învelit, MIG-MAG și TIG, electrozi înveliți, sârmă și flux — o marcă europeană de sudură din grupul Lincoln Electric.",
+    description: [
+      "SAF-FRO s-a format prin reunirea a două mărci istorice ale sudurii europene: SAF — La Soudure Autogène Française, înființată în Franța în 1909 — și FRO — Fabbriche Riunite Ossigeno, deschisă în Italia în 1924. Ambele au pornit de la sudura oxiacetilenică și au devenit referințe pe piețele lor naționale.",
+      "Din 1993 cele două mărci au funcționat în cadrul grupului Air Liquide Welding, iar din 2017 SAF-FRO face parte din grupul Lincoln Electric, unul dintre liderii mondiali în echipamente și consumabile pentru sudură și tăiere.",
+      "ScuDiver furnizează aparate de sudură, electrozi înveliți, sârmă de sudură, măști cu cristale lichide și accesorii SAF-FRO pentru ateliere, echipe de întreținere și instituții publice, cu fișe tehnice și declarații de conformitate la livrare.",
+    ],
+    specialties: [
+      "Aparate de sudură cu electrod învelit (MMA)",
+      "Instalații MIG-MAG și TIG",
+      "Electrozi înveliți pentru oțel și inox",
+      "Sârmă de sudură și flux",
+    ],
+    categorySlugs: ["sudura", "echipament-de-protectie"],
+    accent: "#0069B4",
+    seo: {
+      title: "Aparate de Sudură și Electrozi SAF-FRO",
+      description:
+        "Distribuitor SAF-FRO: aparate de sudură MMA, MIG-MAG și TIG, electrozi înveliți, sârmă de sudură și accesorii. Ofertă pentru firme și instituții publice.",
+      keywords: [
+        "SAF-FRO",
+        "aparat de sudura",
+        "electrozi sudura",
+        "sudura MIG MAG",
+        "sudura TIG",
+        "furnizor SAF-FRO Romania",
+      ],
+    },
+  },
+
   // ─── Chimie de construcții și finisaje ──────────────────────────────────────
   {
     slug: "soudal",
@@ -630,6 +671,16 @@ export function getProductsByBrand(slug: string) {
 /** The brand a catalogue product belongs to, if it has a dedicated page. */
 export function getBrandForProduct(productBrand: string) {
   return brands.find((b) => b.productBrands.includes(productBrand));
+}
+
+/**
+ * Brands that supply a category, in catalogue order. Read from each brand's
+ * own `categorySlugs` rather than derived from the products on file — the
+ * catalogue holds a sample of the range, so deriving it would hide brands
+ * whose products simply have not been written up yet.
+ */
+export function getBrandsForCategory(categorySlug: string) {
+  return brands.filter((b) => b.categorySlugs.includes(categorySlug));
 }
 
 export function getFeaturedBrands() {

@@ -72,15 +72,17 @@ export function BrandHero({ brand }: { brand: Brand }) {
                 </span>
               )}
               <span className="inline-flex items-center gap-2">
-                <span className="relative h-6 w-16 rounded-xs bg-white/90 px-1.5">
-                  <Image
-                    src={brand.logo}
-                    alt=""
-                    fill
-                    sizes="64px"
-                    className="object-contain p-0.5"
-                  />
-                </span>
+                {brand.logo && (
+                  <span className="relative h-6 w-16 rounded-xs bg-white/90 px-1.5">
+                    <Image
+                      src={brand.logo}
+                      alt=""
+                      fill
+                      sizes="64px"
+                      className="object-contain p-0.5"
+                    />
+                  </span>
+                )}
                 Distribuit de ScuDiver
               </span>
             </div>

@@ -25,13 +25,20 @@ export function BrandCarousel() {
                 className="flex items-center justify-center w-28 h-14 rounded-sm grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
                 title={brand.name}
               >
-                <Image
-                  src={brand.logo}
-                  alt={brand.name}
-                  width={112}
-                  height={56}
-                  className="max-h-10 w-auto object-contain"
-                />
+                {brand.logo ? (
+                  <Image
+                    src={brand.logo}
+                    alt={brand.name}
+                    width={112}
+                    height={56}
+                    className="max-h-10 w-auto object-contain"
+                  />
+                ) : (
+                  /* No logo asset on file — the wordmark stands in for it. */
+                  <span className="font-display font-extrabold text-sm uppercase tracking-tight text-charcoal text-center leading-tight">
+                    {brand.name}
+                  </span>
+                )}
               </Link>
             </li>
           ))}

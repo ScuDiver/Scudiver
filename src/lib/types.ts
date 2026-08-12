@@ -23,8 +23,6 @@ export interface Category {
   cpvCode: string;
   cpvDescription: string;
   icon: string;
-  image?: string;
-  productCount?: number;
 }
 
 export interface Brand {
@@ -37,8 +35,11 @@ export interface Brand {
    * mapping is listed explicitly rather than derived from the name.
    */
   productBrands: string[];
-  /** Manufacturer logo, on transparent or white background. */
-  logo: string;
+  /**
+   * Manufacturer logo, on transparent or white background. Optional — a brand
+   * we distribute but hold no logo asset for falls back to its wordmark.
+   */
+  logo?: string;
   /** 16:9 catalogue photo — desktop brand hero and OpenGraph image. */
   imageWide: string;
   imageWideSm: string;

@@ -148,7 +148,7 @@ export function ToolsShowcase() {
                     className="mt-5 inline-flex items-center gap-1.5 text-white font-display font-bold text-sm uppercase hover:gap-3 transition-all"
                     aria-label={`Vezi ${card.label}`}
                   >
-                    Vezi produsele
+                    Vezi brandurile
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>

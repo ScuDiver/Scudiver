@@ -1,6 +1,12 @@
 import type { Category } from "@/lib/types";
-import { products } from "@/lib/data/products";
 
+/**
+ * Domains of supply, not a catalogue index. A category exists to route a
+ * visitor to the brands that cover it and to carry the CPV code a public
+ * buyer searches on — it deliberately carries no product count, because the
+ * handful of catalogue entries per domain is a sample of the range, not the
+ * range itself.
+ */
 export const categories: Category[] = [
   {
     slug: "scule-electrice",
@@ -10,8 +16,6 @@ export const categories: Category[] = [
     cpvCode: "43830000-0",
     cpvDescription: "Scule electrice / scule cu motor",
     icon: "⚡",
-    image: "/assets/categories/sudura-saffro.webp",
-    productCount: 8,
   },
   {
     slug: "scule-de-mana",
@@ -21,8 +25,6 @@ export const categories: Category[] = [
     cpvCode: "44511000-5",
     cpvDescription: "Scule de mână",
     icon: "🔧",
-    image: "/assets/categories/scule-de-mana.webp",
-    productCount: 6,
   },
   {
     slug: "burghie-si-accesorii",
@@ -32,8 +34,6 @@ export const categories: Category[] = [
     cpvCode: "44512000-2",
     cpvDescription: "Diverse scule de mână / accesorii",
     icon: "🔩",
-    image: "/assets/categories/burghie-bolman.webp",
-    productCount: 6,
   },
   {
     slug: "truse-de-scule",
@@ -43,8 +43,6 @@ export const categories: Category[] = [
     cpvCode: "44512940-3",
     cpvDescription: "Truse de scule",
     icon: "🧰",
-    image: "/assets/categories/truse-de-scule.webp",
-    productCount: 4,
   },
   {
     slug: "echipament-de-protectie",
@@ -54,8 +52,15 @@ export const categories: Category[] = [
     cpvCode: "18100000-0",
     cpvDescription: "Echipament individual de protecție",
     icon: "🦺",
-    image: "/assets/categories/echipament-de-protectie.webp",
-    productCount: 4,
+  },
+  {
+    slug: "sudura",
+    name: "Sudură și Consumabile",
+    description:
+      "Aparate de sudură cu electrod învelit, MIG-MAG și TIG, electrozi, sârmă de sudură, măști cu cristale lichide și accesorii pentru atelier și șantier.",
+    cpvCode: "42662000-4",
+    cpvDescription: "Echipament de sudură",
+    icon: "🔥",
   },
   {
     slug: "aparataj-electric",
@@ -65,8 +70,6 @@ export const categories: Category[] = [
     cpvCode: "31200000-8",
     cpvDescription: "Aparate de distribuție și control al electricității",
     icon: "🔌",
-    image: "/assets/brands/catalog/eaton-wide.webp",
-    productCount: 7,
   },
   {
     slug: "vopsele-si-accesorii",
@@ -76,8 +79,6 @@ export const categories: Category[] = [
     cpvCode: "44810000-1",
     cpvDescription: "Vopsele și produse pentru finisaje",
     icon: "🎨",
-    image: "/assets/brands/catalog/schuller-wide.webp",
-    productCount: 7,
   },
   {
     slug: "consumabile",
@@ -87,8 +88,6 @@ export const categories: Category[] = [
     cpvCode: "44316000-8",
     cpvDescription: "Articole de fierărie / consumabile",
     icon: "📦",
-    image: "/assets/categories/elemente-de-fixare-loctite.webp",
-    productCount: 8,
   },
   {
     slug: "elemente-de-asamblare",
@@ -98,19 +97,9 @@ export const categories: Category[] = [
     cpvCode: "44530000-4",
     cpvDescription: "Dispozitive de fixare / elemente de asamblare",
     icon: "🔩",
-    image: "/assets/categories/elemente-de-fixare.webp",
-    productCount: 6,
   },
 ];
 
 export function getCategoryBySlug(slug: string) {
   return categories.find((c) => c.slug === slug);
-}
-
-/**
- * Live count from the catalogue. Prefer this over `Category.productCount`,
- * which is a hand-maintained hint and drifts as products are added.
- */
-export function getCategoryProductCount(slug: string) {
-  return products.filter((p) => p.categorySlug === slug).length;
 }

@@ -186,13 +186,20 @@ export default async function ProductPage({ params }: Props) {
                 <div className="p-5">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="relative h-10 w-24 shrink-0">
-                      <Image
-                        src={brand.logo}
-                        alt={brand.name}
-                        fill
-                        sizes="96px"
-                        className="object-contain object-left"
-                      />
+                      {brand.logo ? (
+                        <Image
+                          src={brand.logo}
+                          alt={brand.name}
+                          fill
+                          sizes="96px"
+                          className="object-contain object-left"
+                        />
+                      ) : (
+                        /* No logo asset on file — the wordmark stands in for it. */
+                        <span className="flex h-full items-center font-display font-extrabold text-base uppercase leading-tight text-charcoal">
+                          {brand.name}
+                        </span>
+                      )}
                     </div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-muted">
                       {brand.origin}
