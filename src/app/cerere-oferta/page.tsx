@@ -6,19 +6,31 @@ import Link from "next/link";
 import { CheckCircle2, AlertCircle, Send } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 
+/**
+ * Opening line for the products field, from whichever context the visitor
+ * arrived with. Brand pages link with `?brand=`, category pages with
+ * `?categorie=`, product pages with `?produs=` — all three have to land
+ * somewhere, or the CTA quietly drops what the visitor already told us.
+ */
+function buildPrefill(produs: string, categorie: string, brand: string) {
+  if (produs) return `${produs}${categorie ? ` (${categorie})` : ""}`;
+  if (brand) return `Produse ${brand}${categorie ? ` — ${categorie}` : ""}: `;
+  if (categorie) return `${categorie}: `;
+  return "";
+}
+
 function QuoteForm() {
   const searchParams = useSearchParams();
   const prefilledProduct = searchParams.get("produs") ?? "";
   const prefilledCategory = searchParams.get("categorie") ?? "";
+  const prefilledBrand = searchParams.get("brand") ?? "";
 
   const [form, setForm] = useState({
     company: "",
     contactName: "",
     email: "",
     phone: "",
-    products: prefilledProduct
-      ? `${prefilledProduct}${prefilledCategory ? ` (${prefilledCategory})` : ""}`
-      : "",
+    products: buildPrefill(prefilledProduct, prefilledCategory, prefilledBrand),
     message: "",
     gdprConsent: false,
   });
@@ -26,13 +38,11 @@ function QuoteForm() {
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    if (prefilledProduct) {
-      setForm((f) => ({
-        ...f,
-        products: `${prefilledProduct}${prefilledCategory ? ` (${prefilledCategory})` : ""}`,
-      }));
+    const prefill = buildPrefill(prefilledProduct, prefilledCategory, prefilledBrand);
+    if (prefill) {
+      setForm((f) => ({ ...f, products: prefill }));
     }
-  }, [prefilledProduct, prefilledCategory]);
+  }, [prefilledProduct, prefilledCategory, prefilledBrand]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -75,10 +85,10 @@ function QuoteForm() {
               <strong>48 de ore lucrătoare</strong> cu o ofertă detaliată.
             </p>
             <Link
-              href="/produse"
+              href="/branduri"
               className="inline-flex items-center gap-2 bg-brand text-white font-semibold px-6 py-3 rounded-sm hover:bg-brand-dark transition-colors"
             >
-              Continuați navigarea în catalog
+              Vezi brandurile distribuite
             </Link>
           </div>
         ) : (

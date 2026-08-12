@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | ScuDiver",
   },
   description:
-    "Distribuitor autorizat Bosch, DeWalt, Makita, Milwaukee, Unior, YATO, INGCO, SOUDAL, Schneider Electric și Eaton. Ofertă pentru firme și licitații publice SEAP.",
+    "Distribuim Bosch, DeWalt, Makita, Milwaukee, Unior, YATO, INGCO, SAF-FRO, SOUDAL, Schneider Electric și Eaton — gama completă a fiecărui brand, la cerere. Operator economic înregistrat în SEAP.",
   keywords: [
     "distribuitor scule",
     "branduri scule",

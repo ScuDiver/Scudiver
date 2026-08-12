@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle2, FileText, Clock, ShieldCheck } from "lucide-r
 
 export const metadata: Metadata = {
   title: "Licitații Publice B2G",
-  description: "ScuDiver participă la licitații publice prin SEAP / e-licitatie.ro. Furnizor autorizat de scule și accesorii pentru instituții publice din România.",
+  description: "ScuDiver participă la licitații publice prin SEAP / e-licitatie.ro. Operator economic înregistrat în SEAP, furnizor de scule și accesorii pentru instituții publice din România.",
 };
 
 const advantages = [
@@ -17,7 +17,7 @@ const advantages = [
 ];
 
 const steps = [
-  { num: "1", title: "Identificați produsele necesare", desc: "Consultați catalogul nostru sau contactați-ne cu specificațiile tehnice / codul CPV." },
+  { num: "1", title: "Identificați produsele necesare", desc: "Alegeți brandul din care aveți nevoie sau contactați-ne direct cu specificațiile tehnice / codul CPV." },
   { num: "2", title: "Solicitați oferta", desc: "Completați formularul de cerere de ofertă cu detalii despre cantitate și termenul de livrare." },
   { num: "3", title: "Primiți oferta detaliată", desc: "Vă transmitem oferta în maxim 48 de ore, cu prețuri, termeni și documentația necesară." },
   { num: "4", title: "Publicați procedura SEAP", desc: "Publicați procedura de achiziție pe e-licitatie.ro. Participăm și depunem oferta electronică." },
@@ -28,7 +28,7 @@ export default function LicitatiiB2GPage() {
     <>
       <PageHeader
         title="Licitații Publice B2G"
-        subtitle="Furnizor autorizat SEAP — participăm la achiziții publice pentru scule, accesorii și echipamente de protecție."
+        subtitle="Operator economic înregistrat în SEAP — participăm la achiziții publice pentru scule, accesorii și echipamente de protecție."
         dark
       />
 

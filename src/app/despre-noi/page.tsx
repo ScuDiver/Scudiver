@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { brands } from "@/lib/data/brands";
 import { Award, Handshake, Building2, Users, Calendar, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ const milestones = [
   {
     year: "2026",
     title: "Astăzi",
-    desc: "Portofoliu de peste 500 de produse, 16+ branduri internaționale și parteneriate active cu instituții publice din toată România.",
+    desc: `Portofoliu de peste 5.000 de produse din gama a ${brands.length} branduri internaționale, cu parteneriate active cu instituții publice din toată România.`,
   },
 ];
 
@@ -66,8 +67,9 @@ export default function DespreNoiPage() {
               </h2>
               <p className="text-white/60 text-base leading-relaxed mb-4">
                 ScuDiver este o companie românească specializată în distribuția de scule electrice,
-                scule de mână, burghie, accesorii, elemente de asamblare și echipamente individuale
-                de protecție destinate industriei construcțiilor, instalatorilor și instituțiilor publice.
+                scule de mână, burghie, accesorii, elemente de asamblare, echipamente de sudură,
+                aparataj electric și echipamente individuale de protecție, destinate industriei
+                construcțiilor, instalatorilor și instituțiilor publice.
               </p>
               <p className="text-white/60 text-base leading-relaxed">
                 Participăm activ la proceduri de achiziție publică prin platforma SEAP /

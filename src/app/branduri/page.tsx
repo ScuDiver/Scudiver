@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   keywords: [
     "branduri scule",
     "distribuitor scule Romania",
-    "furnizor autorizat scule",
+    "furnizor scule licitatii publice",
     ...brands.map((b) => b.name),
   ],
   alternates: { canonical: "/branduri" },
@@ -43,7 +43,7 @@ export default function BranduriPage() {
           name: brand.name,
           description: brand.summary,
           url: `https://scudiver.ro/branduri/${brand.slug}`,
-          logo: `https://scudiver.ro${brand.logo}`,
+          ...(brand.logo ? { logo: `https://scudiver.ro${brand.logo}` } : {}),
         },
       })),
     },

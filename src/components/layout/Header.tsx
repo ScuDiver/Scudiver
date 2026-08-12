@@ -54,7 +54,7 @@ export function Header() {
       {/* Top bar */}
       <div className="bg-charcoal-mid border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9 text-xs text-white/60">
-          <span>Furnizor autorizat SEAP · Licitații publice e-licitatie.ro</span>
+          <span>Operator economic înregistrat în SEAP · Licitații publice e-licitatie.ro</span>
           <a
             href="tel:0753657215"
             className="flex items-center gap-1.5 hover:text-brand transition-colors"
@@ -126,7 +126,7 @@ export function Header() {
                         >
                           {link.menu === "branduri"
                             ? "Vezi toate brandurile →"
-                            : "Vezi toate produsele →"}
+                            : "Vezi toate domeniile →"}
                         </Link>
                       </div>
                     </div>

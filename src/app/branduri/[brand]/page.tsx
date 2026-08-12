@@ -53,9 +53,7 @@ export default async function BrandPage({ params }: Props) {
   const brand = getBrandBySlug(slug);
   if (!brand) notFound();
 
-  const brandProducts = getProductsByBrand(brand.slug);
-  const shown = brandProducts.slice(0, PRODUCTS_SHOWN);
-  const remaining = brandProducts.length - shown.length;
+  const shown = getProductsByBrand(brand.slug).slice(0, PRODUCTS_SHOWN);
   const brandCategories = brand.categorySlugs
     .map((s) => getCategoryBySlug(s))
     .filter((c) => c !== undefined);
@@ -81,7 +79,7 @@ export default async function BrandPage({ params }: Props) {
         name: brand.name,
         description: brand.summary,
         url: `${SITE}/branduri/${brand.slug}`,
-        logo: `${SITE}${brand.logo}`,
+        ...(brand.logo ? { logo: `${SITE}${brand.logo}` } : {}),
         image: `${SITE}${brand.imageWide}`,
         slogan: brand.tagline,
       },
@@ -204,10 +202,8 @@ export default async function BrandPage({ params }: Props) {
                     </div>
                   )}
                   <div className="flex items-center justify-between px-5 py-3">
-                    <dt className="text-muted">Produse în catalog</dt>
-                    <dd className="font-semibold text-charcoal">
-                      {brandProducts.length}
-                    </dd>
+                    <dt className="text-muted">Disponibilitate</dt>
+                    <dd className="font-semibold text-charcoal">Gama completă</dd>
                   </div>
                 </dl>
               </div>
@@ -292,7 +288,7 @@ export default async function BrandPage({ params }: Props) {
                   id="produse-brand"
                   className="font-display font-extrabold text-3xl md:text-4xl text-charcoal uppercase leading-none"
                 >
-                  Produse {brand.name}
+                  Exemple din gama {brand.name}
                 </h2>
               </div>
             </div>
@@ -308,11 +304,10 @@ export default async function BrandPage({ params }: Props) {
             </div>
 
             <p className="mt-6 text-sm text-muted">
-              {remaining > 0
-                ? `Încă ${remaining} ${remaining === 1 ? "produs" : "de produse"} ${brand.name} în catalog. `
-                : ""}
-              Gama completă este mai largă decât selecția afișată — solicitați
-              lista actualizată pentru referințele care vă interesează.
+              Selecția de mai sus este un reper, nu gama. Furnizăm întregul
+              portofoliu {brand.name} — trimiteți codul de produs, descrierea
+              din caietul de sarcini sau doar aplicația, și revenim cu ofertă în
+              48 de ore.
             </p>
           </div>
         </section>

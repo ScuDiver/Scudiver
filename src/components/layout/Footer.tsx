@@ -95,7 +95,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white/40 mb-4">
               <Link href="/produse" className="hover:text-white/70 transition-colors">
-                Catalog Produse
+                Domenii de Furnizare
               </Link>
             </h3>
             <ul className="space-y-2">

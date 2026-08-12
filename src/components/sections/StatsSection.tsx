@@ -1,9 +1,15 @@
 import { brands } from "@/lib/data/brands";
+import { yearsInBusiness } from "@/lib/company";
 
+/**
+ * The only place on the site that quantifies the range. Every other surface
+ * routes to a brand instead of counting products — the catalogue holds a
+ * sample, so per-category and per-brand counts understated the offer.
+ */
 const stats = [
   { value: `${brands.length}`, label: "Branduri distribuite" },
-  { value: "8+", label: "Ani de experiență" },
-  { value: "500+", label: "Produse disponibile" },
+  { value: `${yearsInBusiness()}+`, label: "Ani de experiență" },
+  { value: "5.000+", label: "Produse disponibile" },
   { value: "48h", label: "Răspuns la oferte" },
 ];
 

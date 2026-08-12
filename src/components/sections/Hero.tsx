@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Award, Truck, Zap } from "lucide-react";
 import { brands } from "@/lib/data/brands";
+import { yearsInBusiness } from "@/lib/company";
 
 const pillars = [
   { icon: ShieldCheck, text: "Scule certificate CE" },
@@ -8,11 +9,15 @@ const pillars = [
   { icon: Truck, text: "Livrare rapidă B2G" },
 ];
 
+/**
+ * Decorative counters only — no product count. The catalogue on this site is a
+ * sample of the range, so any figure drawn from it would understate the offer.
+ */
 const stats = [
   { n: `${brands.length}`, l: "Branduri" },
-  { n: "8 ani", l: "Experiență" },
+  { n: `${yearsInBusiness()} ani`, l: "Experiență" },
   { n: "48h", l: "Răspuns B2G" },
-  { n: "500+", l: "Produse" },
+  { n: "CE", l: "Conformitate" },
 ];
 
 export function Hero() {
@@ -40,7 +45,7 @@ export function Hero() {
           {/* Left — text content */}
           <div>
             <p className="text-brand font-display font-bold text-sm uppercase tracking-widest mb-4">
-              Furnizor Autorizat SEAP · Est. 2016
+              Operator economic înregistrat în SEAP
             </p>
 
             <h1 className="font-display font-extrabold text-white uppercase leading-none tracking-tight">
@@ -57,8 +62,9 @@ export function Hero() {
 
             <p className="mt-6 text-white/60 text-base md:text-lg leading-relaxed max-w-xl">
               Distribuim {brands.length} mărci de scule, echipament de protecție,
-              aparataj electric și chimie de construcții — Bosch, DeWalt, Makita,
-              Milwaukee, Unior și altele. Participăm la licitații publice prin{" "}
+              aparataj electric, sudură și chimie de construcții — Bosch, DeWalt,
+              Makita, Milwaukee, Unior și altele. Furnizăm gama completă a
+              fiecărui brand, la cerere. Participăm la licitații publice prin{" "}
               <a
                 href="https://e-licitatie.ro"
                 target="_blank"
@@ -145,7 +151,7 @@ export function Hero() {
                   </div>
                   <div className="absolute -bottom-2 -left-4 bg-brand text-white text-xs font-bold px-3 py-1.5 rounded-sm shadow-lg flex items-center gap-1.5">
                     <Award size={12} />
-                    SEAP Autorizat
+                    Înregistrat SEAP
                   </div>
                 </div>
 

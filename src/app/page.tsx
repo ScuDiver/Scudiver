@@ -47,20 +47,25 @@ export default function HomePage() {
           <div className="flex items-end justify-between mb-8">
             <div>
               <p className="text-brand font-bold text-sm uppercase tracking-widest mb-1">
-                Selecție
+                Exemple din gamă
               </p>
               <h2
                 id="featured-heading"
                 className="font-display font-extrabold text-4xl text-charcoal uppercase leading-none"
               >
-                Produse Recomandate
+                Cum Arată o Cerere
               </h2>
+              <p className="mt-3 max-w-2xl text-sm text-muted leading-relaxed">
+                Câteva referințe cu fișă tehnică completă, ca reper. Furnizăm
+                gama întreagă a fiecărui brand — cereți ofertă pentru orice
+                produs, chiar dacă nu apare aici.
+              </p>
             </div>
             <Link
-              href="/produse"
-              className="hidden md:flex items-center gap-1.5 text-sm font-semibold text-brand hover:text-brand-dark transition-colors"
+              href="/branduri"
+              className="hidden md:flex shrink-0 items-center gap-1.5 text-sm font-semibold text-brand hover:text-brand-dark transition-colors"
             >
-              Toate produsele <ArrowRight size={14} />
+              Toate brandurile <ArrowRight size={14} />
             </Link>
           </div>
 
@@ -127,10 +132,10 @@ export default function HomePage() {
 
           <div className="mt-6 md:hidden">
             <Link
-              href="/produse"
+              href="/branduri"
               className="flex items-center justify-center gap-2 w-full bg-charcoal text-white font-display font-bold text-base uppercase px-6 py-3 rounded-sm hover:opacity-90 transition-opacity"
             >
-              Toate produsele <ArrowRight size={16} />
+              Toate brandurile <ArrowRight size={16} />
             </Link>
           </div>
         </div>
