@@ -144,7 +144,7 @@ export const brands: Brand[] = [
     logo: `${LOGOS}/milwaukee.webp`,
     ...images("milwaukee"),
     imageAlt:
-      "Șurubelniță cu impact Milwaukee M18 FUEL în timpul strângerii unui element de fixare",
+      "Muncitor pe schelă găurind un planșeu de beton cu un rotopercutor Milwaukee M18 FUEL cu aspirare de praf",
     tagline: "Sistemul M18 FUEL pentru lucrări grele",
     origin: "Statele Unite",
     founded: "1924",
