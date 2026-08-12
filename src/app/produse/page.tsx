@@ -4,11 +4,13 @@ import { ArrowRight } from "lucide-react";
 import { categories } from "@/lib/data/categories";
 import { products } from "@/lib/data/products";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { BrandCarousel } from "@/components/sections/BrandCarousel";
 
 export const metadata: Metadata = {
   title: "Catalog Produse",
   description:
-    "Catalog complet de scule electrice, scule de mână, burghie, truse și accesorii pentru construcții. Specificații tehnice complete.",
+    "Catalog de scule electrice, scule de mână, burghie, truse, echipament de protecție, aparataj electric și consumabile, cu specificații tehnice complete.",
+  alternates: { canonical: "/produse" },
 };
 
 export default function ProdusePage() {
@@ -16,7 +18,7 @@ export default function ProdusePage() {
     <>
       <PageHeader
         title="Catalog Produse"
-        subtitle="Scule electrice, scule de mână, burghie și accesorii pentru construcții — cu specificații tehnice complete."
+        subtitle="Catalogul pe categorii, cu specificații tehnice complete. Dacă știți marca pe care o căutați, porniți din pagina de branduri."
         dark
       />
 
@@ -83,6 +85,8 @@ export default function ProdusePage() {
 
         </div>
       </div>
+
+      <BrandCarousel />
     </>
   );
 }

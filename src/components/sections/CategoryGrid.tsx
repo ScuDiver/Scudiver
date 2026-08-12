@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Zap, Wrench, Settings, Package, ShieldCheck, Layers, Link2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { categories } from "@/lib/data/categories";
+import { categories, getCategoryProductCount } from "@/lib/data/categories";
 
 interface Visual {
   gradient: string;
@@ -134,7 +134,7 @@ export function CategoryGrid() {
                     {cat.description}
                   </p>
                   <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-brand">
-                    <span>{cat.productCount} produse</span>
+                    <span>{getCategoryProductCount(cat.slug)} produse</span>
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>

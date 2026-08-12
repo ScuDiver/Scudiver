@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
+import { brands } from "@/lib/data/brands";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,25 +20,23 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://scudiver.ro"),
   title: {
-    default: "ScuDiver — Scule și Accesorii pentru Construcții",
+    default: "ScuDiver — Distribuitor Branduri de Scule și Echipamente",
     template: "%s | ScuDiver",
   },
   description:
-    "Furnizor autorizat de scule electrice, scule de mână, burghie și accesorii pentru construcții. Participăm la licitații publice SEAP / e-licitatie.ro.",
+    "Distribuitor autorizat Bosch, DeWalt, Makita, Milwaukee, Unior, YATO, INGCO, SOUDAL, Schneider Electric și Eaton. Ofertă pentru firme și licitații publice SEAP.",
   keywords: [
+    "distribuitor scule",
+    "branduri scule",
+    "furnizor scule",
     "scule electrice",
-    "scule de mana",
-    "burghie",
-    "truse de scule",
-    "accesorii constructii",
+    "echipament de protectie",
+    "aparataj electric",
     "SEAP",
     "licitatii publice",
-    "furnizor scule",
-    "DeWalt",
-    "Bosch",
-    "Makita",
-    "Milwaukee",
+    ...brands.map((b) => b.name),
   ],
   openGraph: {
     type: "website",

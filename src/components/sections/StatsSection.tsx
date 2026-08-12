@@ -1,7 +1,9 @@
+import { brands } from "@/lib/data/brands";
+
 const stats = [
+  { value: `${brands.length}`, label: "Branduri distribuite" },
   { value: "8+", label: "Ani de experiență" },
   { value: "500+", label: "Produse disponibile" },
-  { value: "15+", label: "Branduri premium" },
   { value: "48h", label: "Răspuns la oferte" },
 ];
 

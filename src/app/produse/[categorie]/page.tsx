@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, categories } from "@/lib/data/categories";
 import { getProductsByCategory } from "@/lib/data/products";
+import { brands as allBrands } from "@/lib/data/brands";
 import { Badge } from "@/components/ui/Badge";
 
 interface Props {
@@ -22,6 +23,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: cat.name,
     description: cat.description,
+    alternates: { canonical: `/produse/${cat.slug}` },
+    openGraph: {
+      title: `${cat.name} | ScuDiver`,
+      description: cat.description,
+      url: `/produse/${cat.slug}`,
+      type: "website",
+      images: cat.image ? [{ url: cat.image, alt: cat.name }] : undefined,
+    },
   };
 }
 
@@ -31,6 +40,12 @@ export default async function CategoryPage({ params }: Props) {
   if (!cat) notFound();
 
   const catProducts = getProductsByCategory(categorie);
+
+  // Brands represented in this category, in the order they appear on /branduri.
+  const productBrandNames = new Set(catProducts.map((p) => p.brand));
+  const categoryBrands = allBrands.filter((b) =>
+    b.productBrands.some((name) => productBrandNames.has(name))
+  );
 
   return (
     <>
@@ -54,6 +69,31 @@ export default async function CategoryPage({ params }: Props) {
             </div>
           </div>
           <p className="mt-4 text-white/70 max-w-2xl">{cat.description}</p>
+
+          {categoryBrands.length > 0 && (
+            <div className="mt-6">
+              <p className="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-2">
+                Branduri în această categorie
+              </p>
+              <ul className="flex flex-wrap gap-2">
+                {categoryBrands.map((brand) => (
+                  <li key={brand.slug}>
+                    <Link
+                      href={`/branduri/${brand.slug}`}
+                      className="inline-flex items-center gap-1.5 rounded-sm border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/80 hover:border-white/40 hover:text-white transition-colors"
+                    >
+                      <span
+                        className="h-2 w-2 rounded-full"
+                        style={{ backgroundColor: brand.accent }}
+                        aria-hidden="true"
+                      />
+                      {brand.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
 

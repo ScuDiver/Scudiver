@@ -42,3 +42,8 @@ next-env.d.ts
 
 # leftover build artifacts
 /web/
+
+# Source catalogue photography (~230 MB of PNG masters).
+# The optimised WebP derivatives in public/assets/brands/catalog/ are committed
+# and are what the site serves; keep the masters out of git history.
+/Scudiver/
