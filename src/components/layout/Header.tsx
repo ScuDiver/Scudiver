@@ -5,21 +5,39 @@ import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { brands } from "@/lib/data/brands";
+import { categories } from "@/lib/data/categories";
 
-const navLinks = [
+interface NavLink {
+  label: string;
+  href: string;
+  /** Menu key — present only on links that open a dropdown. */
+  menu?: string;
+  children?: { label: string; href: string }[];
+  /** Render the dropdown in two columns (used for the long brand list). */
+  wide?: boolean;
+}
+
+const navLinks: NavLink[] = [
   { label: "Acasă", href: "/" },
+  {
+    label: "Branduri",
+    href: "/branduri",
+    menu: "branduri",
+    wide: true,
+    children: brands.map((b) => ({
+      label: b.name,
+      href: `/branduri/${b.slug}`,
+    })),
+  },
   {
     label: "Produse",
     href: "/produse",
-    children: [
-      { label: "Scule Electrice", href: "/produse/scule-electrice" },
-      { label: "Scule de Mână", href: "/produse/scule-de-mana" },
-      { label: "Burghie și Accesorii", href: "/produse/burghie-si-accesorii" },
-      { label: "Truse de Scule", href: "/produse/truse-de-scule" },
-      { label: "Echipament de Protecție", href: "/produse/echipament-de-protectie" },
-      { label: "Consumabile", href: "/produse/consumabile" },
-      { label: "Elemente de Asamblare", href: "/produse/elemente-de-asamblare" },
-    ],
+    menu: "produse",
+    children: categories.map((c) => ({
+      label: c.name,
+      href: `/produse/${c.slug}`,
+    })),
   },
   { label: "Despre Noi", href: "/despre-noi" },
   { label: "Licitații B2G", href: "/licitatii-b2g" },
@@ -29,7 +47,7 @@ const navLinks = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   return (
     <header className="bg-charcoal sticky top-0 z-50 shadow-lg">
@@ -69,34 +87,46 @@ export function Header() {
               link.children ? (
                 <div key={link.href} className="relative">
                   <button
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    onBlur={() => setTimeout(() => setDropdownOpen(false), 150)}
+                    onClick={() => setOpenMenu(openMenu === link.menu ? null : link.menu!)}
+                    onBlur={() => setTimeout(() => setOpenMenu(null), 150)}
                     className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-sm transition-colors"
-                    aria-expanded={dropdownOpen}
+                    aria-expanded={openMenu === link.menu}
                     aria-haspopup="true"
                   >
                     {link.label}
-                    <ChevronDown size={14} className={cn("transition-transform", dropdownOpen && "rotate-180")} />
+                    <ChevronDown
+                      size={14}
+                      className={cn("transition-transform", openMenu === link.menu && "rotate-180")}
+                    />
                   </button>
-                  {dropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-white shadow-xl rounded-sm border border-border z-50">
-                      {link.children.map((child) => (
+                  {openMenu === link.menu && (
+                    <div
+                      className={cn(
+                        "absolute top-full left-0 mt-1 bg-white shadow-xl rounded-sm border border-border z-50",
+                        link.wide ? "w-[26rem]" : "w-60"
+                      )}
+                    >
+                      <div className={cn("py-1", link.wide && "grid grid-cols-2")}>
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block px-4 py-2 text-sm text-charcoal hover:bg-surface hover:text-brand font-medium transition-colors"
+                            onClick={() => setOpenMenu(null)}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="border-t border-border">
                         <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block px-4 py-2.5 text-sm text-charcoal hover:bg-surface hover:text-brand font-medium transition-colors"
-                          onClick={() => setDropdownOpen(false)}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                      <div className="border-t border-border mt-1">
-                        <Link
-                          href="/produse"
+                          href={link.href}
                           className="block px-4 py-2.5 text-sm text-brand font-semibold hover:bg-surface transition-colors"
-                          onClick={() => setDropdownOpen(false)}
+                          onClick={() => setOpenMenu(null)}
                         >
-                          Vezi toate produsele →
+                          {link.menu === "branduri"
+                            ? "Vezi toate brandurile →"
+                            : "Vezi toate produsele →"}
                         </Link>
                       </div>
                     </div>
@@ -140,25 +170,31 @@ export function Header() {
       {mobileOpen && (
         <nav
           aria-label="Navigare mobilă"
-          className="lg:hidden bg-charcoal-mid border-t border-white/10 px-4 pb-4"
+          className="lg:hidden bg-charcoal-mid border-t border-white/10 px-4 pb-4 max-h-[calc(100vh-6.25rem)] overflow-y-auto"
         >
           <div className="space-y-1 pt-2">
             {navLinks.map((link) =>
               link.children ? (
                 <div key={link.href}>
-                  <div className="px-3 py-2 text-xs font-bold text-white/40 uppercase tracking-wider mt-2">
-                    {link.label}
+                  <Link
+                    href={link.href}
+                    className="block px-3 py-2 text-xs font-bold text-white/40 uppercase tracking-wider mt-2 hover:text-white/70 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label} — vezi toate
+                  </Link>
+                  <div className={cn(link.wide && "grid grid-cols-2")}>
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-sm transition-colors"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
                   </div>
-                  {link.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-sm transition-colors"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
                 </div>
               ) : (
                 <Link

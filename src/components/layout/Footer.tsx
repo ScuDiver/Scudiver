@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
+import { brands } from "@/lib/data/brands";
+import { categories } from "@/lib/data/categories";
 
 const legalLinks = [
   { label: "Termeni și Condiții", href: "/termeni-conditii" },
@@ -10,24 +12,19 @@ const legalLinks = [
   { label: "Declarație de Accesibilitate", href: "/declaratie-accesibilitate" },
 ];
 
-const productLinks = [
-  { label: "Scule Electrice", href: "/produse/scule-electrice" },
-  { label: "Scule de Mână", href: "/produse/scule-de-mana" },
-  { label: "Burghie și Accesorii", href: "/produse/burghie-si-accesorii" },
-  { label: "Truse de Scule", href: "/produse/truse-de-scule" },
-  { label: "Echipament de Protecție", href: "/produse/echipament-de-protectie" },
-  { label: "Consumabile", href: "/produse/consumabile" },
-  { label: "Elemente de Asamblare", href: "/produse/elemente-de-asamblare" },
-];
+const productLinks = categories.map((c) => ({
+  label: c.name,
+  href: `/produse/${c.slug}`,
+}));
 
 export function Footer() {
   return (
     <footer className="bg-charcoal text-white mt-auto" aria-label="Subsol pagină">
       {/* Main footer grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
           {/* Company info */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-3">
             <Link href="/">
               <Image
                 src="/assets/brands/LOGO.webp"
@@ -73,10 +70,33 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Products */}
-          <div>
+          {/* Brands */}
+          <div className="lg:col-span-3">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white/40 mb-4">
-              Catalog Produse
+              <Link href="/branduri" className="hover:text-white/70 transition-colors">
+                Branduri
+              </Link>
+            </h3>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
+              {brands.map((brand) => (
+                <li key={brand.slug}>
+                  <Link
+                    href={`/branduri/${brand.slug}`}
+                    className="text-sm text-white/70 hover:text-white transition-colors"
+                  >
+                    {brand.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Products */}
+          <div className="lg:col-span-2">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white/40 mb-4">
+              <Link href="/produse" className="hover:text-white/70 transition-colors">
+                Catalog Produse
+              </Link>
             </h3>
             <ul className="space-y-2">
               {productLinks.map((link) => (
@@ -93,7 +113,7 @@ export function Footer() {
           </div>
 
           {/* Company links */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white/40 mb-4">
               Companie
             </h3>
@@ -127,7 +147,7 @@ export function Footer() {
           </div>
 
           {/* Contact details — REQUIRED by Legea 365/2002 */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white/40 mb-4">
               Contact
             </h3>

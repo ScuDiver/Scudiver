@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { getCategoryBySlug } from "@/lib/data/categories";
 import { getProductBySlug, products } from "@/lib/data/products";
+import { getBrandForProduct } from "@/lib/data/brands";
 import { Badge } from "@/components/ui/Badge";
 
 interface Props {
@@ -22,9 +23,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return {};
+
+  const url = `/produse/${product.categorySlug}/${product.slug}`;
   return {
     title: product.name,
     description: product.description,
+    keywords: [product.brand, product.name, ...(product.tags ?? [])],
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${product.name} | ScuDiver`,
+      description: product.description,
+      url,
+      type: "website",
+      images: product.image
+        ? [{ url: product.image, alt: product.imageAlt }]
+        : undefined,
+    },
   };
 }
 
@@ -34,6 +48,7 @@ export default async function ProductPage({ params }: Props) {
   if (!product || product.categorySlug !== categorie) notFound();
 
   const cat = getCategoryBySlug(categorie);
+  const brand = getBrandForProduct(product.brand);
 
   return (
     <div className="bg-surface min-h-screen">
@@ -92,7 +107,16 @@ export default async function ProductPage({ params }: Props) {
             {/* Product header */}
             <div className="bg-white border border-border rounded-sm p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Badge variant="brand">{product.brand}</Badge>
+                {brand ? (
+                  <Link
+                    href={`/branduri/${brand.slug}`}
+                    className="rounded-sm hover:opacity-80 transition-opacity"
+                  >
+                    <Badge variant="brand">{brand.name}</Badge>
+                  </Link>
+                ) : (
+                  <Badge variant="brand">{product.brand}</Badge>
+                )}
                 {product.featured && <Badge variant="dark">Recomandat</Badge>}
               </div>
               <h1 className="font-display font-extrabold text-2xl md:text-3xl text-charcoal uppercase leading-tight">
@@ -148,6 +172,43 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Sidebar — quote CTA */}
           <div className="space-y-4">
+            {/* Brand */}
+            {brand && (
+              <Link
+                href={`/branduri/${brand.slug}`}
+                className="group block bg-white border border-border rounded-sm overflow-hidden card-hover"
+              >
+                <div
+                  className="h-1"
+                  style={{ backgroundColor: brand.accent }}
+                  aria-hidden="true"
+                />
+                <div className="p-5">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="relative h-10 w-24 shrink-0">
+                      <Image
+                        src={brand.logo}
+                        alt={brand.name}
+                        fill
+                        sizes="96px"
+                        className="object-contain object-left"
+                      />
+                    </div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted">
+                      {brand.origin}
+                    </p>
+                  </div>
+                  <p className="text-sm text-muted leading-relaxed">
+                    {brand.summary}
+                  </p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand">
+                    Pagina {brand.name}
+                    <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            )}
+
             {/* Quote CTA */}
             <div className="bg-charcoal rounded-sm p-5 space-y-3">
               <h3 className="font-display font-bold text-white uppercase text-lg leading-tight">

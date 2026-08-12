@@ -1,7 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { CategoryGrid } from "@/components/sections/CategoryGrid";
-import { BrandCarousel } from "@/components/sections/BrandCarousel";
+import { BrandGrid } from "@/components/sections/BrandGrid";
 import { B2GBanner } from "@/components/sections/B2GBanner";
 import { ToolsShowcase } from "@/components/sections/ToolsShowcase";
 import { getFeaturedProducts } from "@/lib/data/products";
@@ -37,9 +37,9 @@ export default function HomePage() {
     <>
       <Hero />
       <StatsSection />
+      <BrandGrid />
       <ToolsShowcase />
       <CategoryGrid />
-      <BrandCarousel />
 
       {/* Featured products */}
       <section className="bg-white py-16" aria-labelledby="featured-heading">

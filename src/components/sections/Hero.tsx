@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Award, Truck, Zap } from "lucide-react";
+import { brands } from "@/lib/data/brands";
 
 const pillars = [
   { icon: ShieldCheck, text: "Scule certificate CE" },
@@ -8,10 +9,10 @@ const pillars = [
 ];
 
 const stats = [
-  { n: "500+", l: "Produse" },
+  { n: `${brands.length}`, l: "Branduri" },
   { n: "8 ani", l: "Experiență" },
   { n: "48h", l: "Răspuns B2G" },
-  { n: "16+", l: "Branduri" },
+  { n: "500+", l: "Produse" },
 ];
 
 export function Hero() {
@@ -44,20 +45,20 @@ export function Hero() {
 
             <h1 className="font-display font-extrabold text-white uppercase leading-none tracking-tight">
               <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-7xl">
-                SCULE &amp;
+                BRANDURILE
               </span>
               <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-7xl text-brand">
-                ACCESORII
+                CARE CONTEAZĂ
               </span>
               <span className="block text-3xl sm:text-4xl md:text-4xl text-white/70 mt-2">
-                PENTRU CONSTRUCȚII
+                PE ȘANTIER
               </span>
             </h1>
 
             <p className="mt-6 text-white/60 text-base md:text-lg leading-relaxed max-w-xl">
-              Distribuitor profesional de scule electrice, scule de mână, burghie,
-              elemente de asamblare și consumabile. Participăm la licitații publice
-              prin{" "}
+              Distribuim {brands.length} mărci de scule, echipament de protecție,
+              aparataj electric și chimie de construcții — Bosch, DeWalt, Makita,
+              Milwaukee, Unior și altele. Participăm la licitații publice prin{" "}
               <a
                 href="https://e-licitatie.ro"
                 target="_blank"
@@ -78,10 +79,10 @@ export function Hero() {
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/produse"
+                href="/branduri"
                 className="inline-flex items-center justify-center gap-2 border-2 border-white/20 text-white font-display font-bold text-base uppercase px-7 py-3.5 rounded-sm hover:border-white/50 hover:bg-white/5 transition-colors"
               >
-                Catalog Produse
+                Vezi Brandurile
               </Link>
             </div>
 

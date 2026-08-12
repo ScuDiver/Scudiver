@@ -1,4 +1,5 @@
 import type { Category } from "@/lib/types";
+import { products } from "@/lib/data/products";
 
 export const categories: Category[] = [
   {
@@ -57,6 +58,28 @@ export const categories: Category[] = [
     productCount: 4,
   },
   {
+    slug: "aparataj-electric",
+    name: "Aparataj Electric",
+    description:
+      "Siguranțe automate, întrerupătoare diferențiale, contactoare și tablouri de distribuție pentru instalații electrice civile și industriale.",
+    cpvCode: "31200000-8",
+    cpvDescription: "Aparate de distribuție și control al electricității",
+    icon: "🔌",
+    image: "/assets/brands/catalog/eaton-wide.webp",
+    productCount: 7,
+  },
+  {
+    slug: "vopsele-si-accesorii",
+    name: "Vopsele și Accesorii de Zugrăvit",
+    description:
+      "Vopsele spray în nuanțe RAL, grunduri, lacuri, trafalete, pensule și benzi de mascare pentru finisaje interioare și exterioare.",
+    cpvCode: "44810000-1",
+    cpvDescription: "Vopsele și produse pentru finisaje",
+    icon: "🎨",
+    image: "/assets/brands/catalog/schuller-wide.webp",
+    productCount: 7,
+  },
+  {
     slug: "consumabile",
     name: "Consumabile și Accesorii",
     description:
@@ -65,7 +88,7 @@ export const categories: Category[] = [
     cpvDescription: "Articole de fierărie / consumabile",
     icon: "📦",
     image: "/assets/categories/elemente-de-fixare-loctite.webp",
-    productCount: 4,
+    productCount: 8,
   },
   {
     slug: "elemente-de-asamblare",
@@ -82,4 +105,12 @@ export const categories: Category[] = [
 
 export function getCategoryBySlug(slug: string) {
   return categories.find((c) => c.slug === slug);
+}
+
+/**
+ * Live count from the catalogue. Prefer this over `Category.productCount`,
+ * which is a hand-maintained hint and drifts as products are added.
+ */
+export function getCategoryProductCount(slug: string) {
+  return products.filter((p) => p.categorySlug === slug).length;
 }
