@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Phone, FileText } from "lucide-react";
+import { ArrowRight, CheckCircle2, Phone, FileText, BookOpen, Download, ExternalLink } from "lucide-react";
 import { brands, getBrandBySlug, getProductsByBrand } from "@/lib/data/brands";
 import { getCategoryBySlug } from "@/lib/data/categories";
 import { BrandHero } from "@/components/brands/BrandHero";
@@ -227,6 +227,45 @@ export default async function BrandPage({ params }: Props) {
                     ))}
                   </ul>
                 </div>
+              )}
+
+              {brand.catalog && (
+                <a
+                  href={brand.catalog.url}
+                  target={brand.catalog.external ? "_blank" : undefined}
+                  rel={brand.catalog.external ? "noopener noreferrer" : undefined}
+                  className="group flex items-center justify-between gap-3 border border-border rounded-sm p-5 hover:border-brand hover:bg-surface transition-colors"
+                >
+                  <span className="flex items-center gap-3">
+                    <BookOpen
+                      size={20}
+                      className="shrink-0"
+                      style={{ color: brand.accent }}
+                      aria-hidden="true"
+                    />
+                    <span>
+                      <span className="block font-bold text-charcoal text-sm uppercase tracking-wide">
+                        Catalog {brand.name}
+                      </span>
+                      <span className="block text-xs text-muted">
+                        {brand.catalog.label}
+                      </span>
+                    </span>
+                  </span>
+                  {brand.catalog.external ? (
+                    <ExternalLink
+                      size={16}
+                      className="shrink-0 text-muted group-hover:text-brand transition-colors"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <Download
+                      size={16}
+                      className="shrink-0 text-muted group-hover:text-brand transition-colors"
+                      aria-hidden="true"
+                    />
+                  )}
+                </a>
               )}
 
               <div className="bg-charcoal rounded-sm p-5 space-y-3">

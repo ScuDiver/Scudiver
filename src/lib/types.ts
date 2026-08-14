@@ -56,6 +56,17 @@ export interface Brand {
   description: string[];
   specialties: string[];
   categorySlugs: string[];
+  /**
+   * Manufacturer catalogue customers can browse — either an external link to the
+   * distributor's online catalogue or a PDF hosted under /public.
+   */
+  catalog?: {
+    url: string;
+    /** Link label, e.g. "Catalog online" or "Listă de prețuri 2025 (PDF)". */
+    label: string;
+    /** True when `url` points off-site; drives the icon and rel attributes. */
+    external?: boolean;
+  };
   /** Manufacturer colour, used for the accent rule on cards and the hero. */
   accent: string;
   featured?: boolean;

@@ -204,6 +204,11 @@ export const brands: Brand[] = [
       "Truse complete pe profil de meserie",
     ],
     categorySlugs: ["scule-de-mana", "truse-de-scule"],
+    catalog: {
+      url: "https://uniortepid.ro/documentatii",
+      label: "Cataloage online (Unior Tepid)",
+      external: true,
+    },
     accent: "#E30613",
     featured: true,
     seo: {
@@ -320,6 +325,11 @@ export const brands: Brand[] = [
       "Truse pentru instalatori",
     ],
     categorySlugs: ["burghie-si-accesorii", "scule-de-mana", "truse-de-scule", "elemente-de-asamblare"],
+    catalog: {
+      url: "https://bolmanindustries.ro/catalog-bolman/",
+      label: "Catalog online (Bolman Industries)",
+      external: true,
+    },
     accent: "#D6001C",
     seo: {
       title: "Scule și Accesorii PROJAHN",
