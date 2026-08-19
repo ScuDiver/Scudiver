@@ -56,18 +56,6 @@ export function Footer() {
                 SAL — Soluționare Alternativă Litigii · ANPC
               </div>
             </a>
-            <p className="text-white/40 text-xs mt-1">
-              * Descărcați pictograma oficială de pe{" "}
-              <a
-                href="https://anpc.ro"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-white/70"
-              >
-                anpc.ro
-              </a>{" "}
-              și înlocuiți acest placeholder.
-            </p>
           </div>
 
           {/* Brands */}
