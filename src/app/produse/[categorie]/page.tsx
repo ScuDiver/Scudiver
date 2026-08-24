@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, BookOpen, Download, ExternalLink } from "lucide-react";
 import { getCategoryBySlug, categories } from "@/lib/data/categories";
 import { getProductsByCategory } from "@/lib/data/products";
 import { getBrandsForCategory } from "@/lib/data/brands";
@@ -77,13 +77,35 @@ export default async function CategoryPage({ params }: Props) {
           </div>
           <p className="mt-4 text-white/70 max-w-2xl">{cat.description}</p>
 
-          <div className="mt-6">
+          <div className="mt-6 flex flex-col sm:flex-row sm:items-stretch gap-3">
             <Link
               href={`/cerere-oferta?categorie=${encodeURIComponent(cat.name)}`}
-              className="inline-flex items-center gap-2 bg-brand text-white font-display font-bold text-base uppercase px-6 py-3 rounded-sm hover:bg-brand-dark transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-brand text-white font-display font-bold text-base uppercase px-6 py-3 rounded-sm hover:bg-brand-dark transition-colors"
             >
               Cere ofertă <ArrowRight size={16} />
             </Link>
+
+            {cat.catalog && (
+              <a
+                href={cat.catalog.url}
+                target="_blank"
+                rel={cat.catalog.external ? "noopener noreferrer" : "noopener"}
+                className="group inline-flex items-center justify-center gap-2.5 border border-white/25 text-white px-6 py-3 rounded-sm hover:border-brand hover:bg-white/5 transition-colors"
+              >
+                <BookOpen size={18} className="shrink-0 text-brand" aria-hidden="true" />
+                <span className="text-left">
+                  <span className="block font-display font-bold text-base uppercase leading-none">
+                    Catalog {cat.name}
+                  </span>
+                  <span className="block text-xs text-white/50 mt-1">{cat.catalog.label}</span>
+                </span>
+                {cat.catalog.external ? (
+                  <ExternalLink size={15} className="shrink-0 text-white/40 group-hover:text-brand transition-colors" aria-hidden="true" />
+                ) : (
+                  <Download size={15} className="shrink-0 text-white/40 group-hover:text-brand transition-colors" aria-hidden="true" />
+                )}
+              </a>
+            )}
           </div>
         </div>
       </section>
