@@ -97,6 +97,10 @@ export const categories: Category[] = [
     cpvCode: "44530000-4",
     cpvDescription: "Dispozitive de fixare / elemente de asamblare",
     icon: "🔩",
+    catalog: {
+      url: "/assets/catalogs/scudiver-elemente-de-asamblare.pdf",
+      label: "Index vizual DIN/ISO — 3 pagini (PDF)",
+    },
   },
 ];
 

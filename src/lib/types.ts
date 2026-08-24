@@ -23,6 +23,17 @@ export interface Category {
   cpvCode: string;
   cpvDescription: string;
   icon: string;
+  /**
+   * A catalogue covering the domain as a whole, rather than one manufacturer —
+   * same shape as `Brand.catalog`, and rendered the same way.
+   */
+  catalog?: {
+    url: string;
+    /** Link label, e.g. "Index vizual DIN/ISO — 3 pagini (PDF)". */
+    label: string;
+    /** True when `url` points off-site; drives the icon and rel attributes. */
+    external?: boolean;
+  };
 }
 
 export interface Brand {
