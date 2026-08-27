@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { X, Settings2, CheckCircle2, XCircle } from "lucide-react";
 
@@ -27,6 +27,7 @@ export function CookieBanner() {
   const [showSettings, setShowSettings] = useState(false);
   const [analytics, setAnalytics] = useState(false);
   const [marketing, setMarketing] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const stored = getStoredConsent();
@@ -34,6 +35,35 @@ export function CookieBanner() {
       setVisible(true);
     }
   }, []);
+
+  /**
+   * Publish our own height as `--cookie-banner-height` so anything pinned to
+   * the bottom of the viewport — the WhatsApp bubble — can clear this bar
+   * rather than hide behind it. Measured rather than hard-coded, because the
+   * bar grows when it wraps on narrow screens or the settings panel opens.
+   */
+  useEffect(() => {
+    const root = document.documentElement;
+    const el = bannerRef.current;
+
+    if (!el) {
+      root.style.setProperty("--cookie-banner-height", "0px");
+      return;
+    }
+
+    const observer = new ResizeObserver(([entry]) => {
+      root.style.setProperty(
+        "--cookie-banner-height",
+        `${entry.contentRect.height}px`
+      );
+    });
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      root.style.setProperty("--cookie-banner-height", "0px");
+    };
+  }, [visible]);
 
   function saveConsent(state: ConsentState) {
     localStorage.setItem(CONSENT_KEY, JSON.stringify(state));
@@ -56,6 +86,7 @@ export function CookieBanner() {
 
   return (
     <div
+      ref={bannerRef}
       role="dialog"
       aria-modal="true"
       aria-label="Setări cookie-uri"

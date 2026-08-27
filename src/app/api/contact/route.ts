@@ -75,7 +75,7 @@ Data: ${new Date().toLocaleString("ro-RO")}
         },
         body: JSON.stringify({
           from: "noreply@scudiver.ro",
-          to: process.env.CONTACT_EMAIL ?? "office@scudiver.ro",
+          to: process.env.CONTACT_EMAIL ?? "contact@scudiver.ro",
           reply_to: email,
           subject: `Contact: ${subject}`,
           text: emailText,

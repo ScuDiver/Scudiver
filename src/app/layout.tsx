@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
+import { WhatsAppBubble } from "@/components/layout/WhatsAppBubble";
 import { brands } from "@/lib/data/brands";
 
 const inter = Inter({
@@ -68,6 +69,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <WhatsAppBubble />
         <CookieBanner />
       </body>
     </html>
