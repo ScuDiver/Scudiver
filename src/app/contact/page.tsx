@@ -20,8 +20,8 @@ const contactInfo = [
   {
     Icon: Mail,
     label: "Email",
-    lines: ["contact@scudiver.ro"],
-    href: "mailto:contact@scudiver.ro",
+    lines: ["office@scudiver.ro"],
+    href: "mailto:office@scudiver.ro",
   },
   {
     Icon: Clock,
